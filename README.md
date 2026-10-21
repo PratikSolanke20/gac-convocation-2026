@@ -1,6 +1,6 @@
 # 🎓 GAC Dharashiv Convocation Ceremony 2026
 
-Official Invitation Website for the **Graduation Ceremony of Batch 2020-21 (57 Graduating BAMS Doctors)** of **Government Ayurvedic College & Hospital, Dharashiv (Maharashtra)**.
+Official Invitation Website for the **Graduation Ceremony of Batch 2020-21 (54 Graduating BAMS Doctors)** of **Government Ayurvedic College & Hospital, Dharashiv (Maharashtra)**.
 
 Held on **Thursday, 22 October 2026** at **Siddhai Garden, Beed Bypass Road, NH52, Dharashiv**.
 
@@ -17,7 +17,7 @@ Held on **Thursday, 22 October 2026** at **Siddhai Garden, Beed Bypass Road, NH5
 - 📜 **Official Vertical Invitation Card Viewer**: Full portrait frame showcasing the complete ceremonial invitation card with instant download option.
 - ⏳ **Live Countdown Timer & Journey Tracker**: Real-time ticker counting down to 22 October 2026, 10:00 AM IST.
 - 📸 **Batch Memories Gallery**: High-definition memories with zoom lightbox modal and slideshow.
-- 🩺 **Meet Our 57 Graduating Doctors**: Searchable, complete roll of honour with zero truncation.
+- 🩺 **Meet Our 54 Graduating Doctors**: Searchable, complete roll of honour with zero truncation.
 - 🎓 **Interactive Cap Toss**: Physical particle celebration.
 - 📍 **Interactive Venue & Navigation**: Embedded Google Maps location for Siddhai Garden, Dharashiv.
 - 📞 **Hospitality Committee Desk**: Direct touchpoint for guest coordination & travel assistance.

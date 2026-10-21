@@ -8,13 +8,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ========================================================
-  // 1. DATA: 57 GRADUATING DOCTORS ROSTER
+  // 1. DATA: 54 GRADUATING DOCTORS ROSTER
   // ========================================================
   const GRADUATES_RAW = [
     "Priyanka Chandrashekhar Nikure",
     "Rohit Arun Gabhud",
     "Aftab Ansar Shaikh",
-    "Komal prabhakar garad",
     "Himanshu Adesh Bodele",
     "Sanjay jayantilal pawara",
     "Tanushri Hemant Musale",
@@ -53,10 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "Jyoti Vijay patil",
     "Rutuja Vilas Bhosale",
     "Kalyan Vilas kolekar",
-    "Anjali Abhimanyu Dokhe",
     "Garad Rutuja Venkatrao",
     "Pratiksha Prakash Deshmukh",
-    "pranali Dattatray Bontawar",
     "Risha Uday wadwale",
     "GOPAL KESHAVRAO PHUPATE",
     "Pavan goroba kshirsagar",
@@ -220,9 +217,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ========================================================
+  // CELEBRATION FANFARE & CHIMES SOUND SYNTHESIZER
+  // ========================================================
+  let audioCtx = null;
+
+  function playCelebrationFanfare() {
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      if (!audioCtx) {
+        audioCtx = new AudioContextClass();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const now = audioCtx.currentTime;
+
+      // 1. Celebratory Glockenspiel / Golden Chimes (Sparkling Arpeggio)
+      const chimeNotes = [
+        { f: 523.25, t: 0.00, d: 0.45 }, // C5
+        { f: 659.25, t: 0.08, d: 0.45 }, // E5
+        { f: 783.99, t: 0.16, d: 0.50 }, // G5
+        { f: 1046.50, t: 0.24, d: 0.65 }, // C6
+        { f: 1318.51, t: 0.32, d: 0.90 }  // E6
+      ];
+
+      chimeNotes.forEach(ch => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(ch.f, now + ch.t);
+
+        gain.gain.setValueAtTime(0, now + ch.t);
+        gain.gain.linearRampToValueAtTime(0.24, now + ch.t + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + ch.t + ch.d);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now + ch.t);
+        osc.stop(now + ch.t + ch.d);
+      });
+
+      // 2. Triumphant Warm Brass / Organ Fanfare Chord
+      const chord = [311.13, 392.00, 466.16, 622.25]; // Eb Major
+      chord.forEach(freq => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + 0.26);
+
+        gain.gain.setValueAtTime(0, now + 0.26);
+        gain.gain.linearRampToValueAtTime(0.12, now + 0.32);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.55);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now + 0.26);
+        osc.stop(now + 1.6);
+      });
+
+      // 3. Celebratory Party Pop Transient
+      const popOsc = audioCtx.createOscillator();
+      const popGain = audioCtx.createGain();
+      popOsc.type = 'sine';
+      popOsc.frequency.setValueAtTime(160, now);
+      popOsc.frequency.exponentialRampToValueAtTime(40, now + 0.12);
+
+      popGain.gain.setValueAtTime(0.25, now);
+      popGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+      popOsc.connect(popGain);
+      popGain.connect(audioCtx.destination);
+
+      popOsc.start(now);
+      popOsc.stop(now + 0.13);
+
+    } catch (err) {
+      console.warn('Audio playback not supported or blocked:', err);
+    }
+  }
+
   function handleCapTossAction() {
+    playCelebrationFanfare();
     triggerGraduationCapToss(50);
-    showToast('🎓 Graduation Cap Tossed! Congratulations Batch 2020!');
+    showToast('🎓 Graduation Cap Tossed! Celebrating Batch 2020!');
   }
 
   if (heroCapTossBtn) heroCapTossBtn.addEventListener('click', handleCapTossAction);
@@ -278,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // ========================================================
-  // 5. 57 GRADUATING DOCTORS ROSTER & SEARCH
+  // 5. 54 GRADUATING DOCTORS ROSTER & SEARCH
   // ========================================================
   function renderGraduates(list) {
     if (!graduatesGrid) return;
@@ -319,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (studentsCounterBadge) {
-      studentsCounterBadge.textContent = `Showing ${list.length} of 57 Doctors`;
+      studentsCounterBadge.textContent = `Showing ${list.length} of 54 Doctors`;
     }
 
     const cheerBtns = graduatesGrid.querySelectorAll('.doctor-cheer-btn');
@@ -510,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="empty-wishes-placeholder">
           <div class="empty-icon">✍️</div>
           <p><strong>Be the first to share congratulations!</strong></p>
-          <p>Post your blessing or encouraging words for the 57 graduating doctors above.</p>
+          <p>Post your blessing or encouraging words for the 54 graduating doctors above.</p>
         </div>
       `;
       return;
@@ -577,7 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. SHARING & CALENDAR INTEGRATIONS
   // ========================================================
   const pageUrl = window.location.href;
-  const invitationShareText = `🎓 *Official Invitation: Graduation Ceremony 2026*\n🏛️ *Government Ayurvedic College & Hospital, Dharashiv*\n\nYou are cordially invited by Dean Dr. Veena Patil and the faculty to celebrate the Convocation Ceremony of BAMS Batch 2020 on:\n📅 *Thursday, 22 October 2026 at 10:00 AM*\n📍 *Siddhai Garden, Beed Bypass Road, NH52, Dharashiv*\n\nExplore the official website with batch memories, 57 doctors roll & venue directions:\n${pageUrl}`;
+  const invitationShareText = `🎓 *Official Invitation: Graduation Ceremony 2026*\n🏛️ *Government Ayurvedic College & Hospital, Dharashiv*\n\nYou are cordially invited by Dean Dr. Veena Patil and the faculty to celebrate the Convocation Ceremony of BAMS Batch 2020 on:\n📅 *Thursday, 22 October 2026 at 10:00 AM*\n📍 *Siddhai Garden, Beed Bypass Road, NH52, Dharashiv*\n\nExplore the official website with batch memories, 54 doctors roll & venue directions:\n${pageUrl}`;
 
   if (whatsappShareBtn) {
     whatsappShareBtn.addEventListener('click', () => {
@@ -619,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (googleCalBtn) {
     const calTitle = encodeURIComponent("Graduation Ceremony Batch 2020 | GAC & Hospital, Dharashiv");
-    const calDetails = encodeURIComponent("Graduation Ceremony of 57 young Ayurvedic Doctors of Batch 2020-21. Dean: Dr. Veena Patil. Venue: Siddhai Garden, Beed bypass road, NH52, Dharashiv.");
+    const calDetails = encodeURIComponent("Graduation Ceremony of 54 young Ayurvedic Doctors of Batch 2020-21. Dean: Dr. Veena Patil. Venue: Siddhai Garden, Beed bypass road, NH52, Dharashiv.");
     const calLocation = encodeURIComponent("Siddhai Garden, Beed bypass road, NH52, Dharashiv, Maharashtra 413501");
     const calDates = "20261022T043000Z/20261022T093000Z";
     googleCalBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calTitle}&dates=${calDates}&details=${calDetails}&location=${calLocation}`;
@@ -636,7 +720,7 @@ DTSTAMP:20261021T000000Z
 DTSTART:20261022T043000Z
 DTEND:20261022T093000Z
 SUMMARY:Graduation Ceremony Batch 2020 - GAC Dharashiv
-DESCRIPTION:Graduation Ceremony of Batch 2020-21 at Government Ayurvedic College & Hospital, Dharashiv. Dean: Dr. Veena Patil. Celebrating 57 young doctors stepping into the noble profession of healing.
+DESCRIPTION:Graduation Ceremony of Batch 2020-21 at Government Ayurvedic College & Hospital, Dharashiv. Dean: Dr. Veena Patil. Celebrating 54 young doctors stepping into the noble profession of healing.
 LOCATION:Siddhai Garden, Beed bypass road, NH52, Dharashiv, Maharashtra
 STATUS:CONFIRMED
 END:VEVENT
@@ -712,8 +796,16 @@ END:VCALENDAR`;
   }
 
   // ========================================================
-  // 12. NAVIGATION SCROLL TRACKING
+  // 12. NAVIGATION SCROLL & TAB SWITCHING
   // ========================================================
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
+  });
+
   const sections = document.querySelectorAll('section[id], header[id]');
   window.addEventListener('scroll', () => {
     let currentId = '';
@@ -727,12 +819,16 @@ END:VCALENDAR`;
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentId}`) {
-        link.classList.add('active');
-      }
-    });
+    if (currentId) {
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${currentId}`) {
+          if (!link.classList.contains('active')) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    }
   }, { passive: true });
 
 });

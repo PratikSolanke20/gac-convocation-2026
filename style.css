@@ -571,7 +571,7 @@ body.bright-convocation-theme {
   position: sticky;
   top: 8px;
   z-index: 900;
-  padding: 0 16px;
+  padding: 0 12px;
   margin-bottom: 24px;
 }
 
@@ -580,9 +580,9 @@ body.bright-convocation-theme {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 6px 12px;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 6px 14px;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -590,6 +590,9 @@ body.bright-convocation-theme {
   border-radius: 50px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-left: 14px;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
 }
 
@@ -598,14 +601,16 @@ body.bright-convocation-theme {
 }
 
 .nav-item-link {
+  flex-shrink: 0;
+  scroll-snap-align: start;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 7px 15px;
   border-radius: 30px;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
   white-space: nowrap;
   transition: all 0.25s ease;
@@ -615,6 +620,13 @@ body.bright-convocation-theme {
 .nav-item-link.active {
   color: #ffffff;
   background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+  box-shadow: 0 2px 8px rgba(180, 83, 9, 0.25);
+}
+
+@media (min-width: 860px) {
+  .sub-nav-container {
+    justify-content: center;
+  }
 }
 
 /* ========================================================
@@ -1659,7 +1671,7 @@ body.bright-convocation-theme {
 }
 
 /* ========================================================
-   57 GRADUATING DOCTORS ROSTER (FULL NAMES WITHOUT CUTS)
+   54 GRADUATING DOCTORS ROSTER (FULL NAMES WITHOUT CUTS)
    ======================================================== */
 .graduates-section {
   padding: 40px 16px 60px 16px;
@@ -2645,9 +2657,27 @@ body.bright-convocation-theme {
 
 .dev-name-headline {
   font-family: var(--font-royal);
-  font-size: 1.1rem;
-  font-weight: 800;
+  margin: 6px 0 4px 0;
+  line-height: 1.25;
+}
+
+.dev-headline-role {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   color: var(--text-heading);
+  text-transform: uppercase;
+}
+
+.dev-headline-name {
+  display: block;
+  font-size: 1.32rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .dev-name-accent {
