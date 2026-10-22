@@ -8,7 +8,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ========================================================
-  // 1. DATA: 54 GRADUATING DOCTORS ROSTER
+  // 1. DATA: 55 GRADUATING DOCTORS ROSTER
   // ========================================================
   const GRADUATES_RAW = [
     "Priyanka Chandrashekhar Nikure",
@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "HARSHADA PANDIT MOHOD.",
     "Phoola Kumari Meena",
     "Shikha samariya",
-    "Terkar Ankita Dhanaji"
+    "Terkar Ankita Dhanaji",
+    "Rupesh Tandekar"
   ];
 
   function toTitleCase(str) {
@@ -362,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // ========================================================
-  // 5. 54 GRADUATING DOCTORS ROSTER & SEARCH
+  // 5. 55 GRADUATING DOCTORS ROSTER & SEARCH
   // ========================================================
   function renderGraduates(list) {
     if (!graduatesGrid) return;
@@ -403,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (studentsCounterBadge) {
-      studentsCounterBadge.textContent = `Showing ${list.length} of 54 Doctors`;
+      studentsCounterBadge.textContent = `Showing ${list.length} of 55 Doctors`;
     }
 
     const cheerBtns = graduatesGrid.querySelectorAll('.doctor-cheer-btn');
@@ -594,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="empty-wishes-placeholder">
           <div class="empty-icon">✍️</div>
           <p><strong>Be the first to share congratulations!</strong></p>
-          <p>Post your blessing or encouraging words for the 54 graduating doctors above.</p>
+          <p>Post your blessing or encouraging words for the 55 graduating doctors above.</p>
         </div>
       `;
       return;
@@ -661,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. SHARING & CALENDAR INTEGRATIONS
   // ========================================================
   const pageUrl = window.location.href;
-  const invitationShareText = `🎓 *Official Invitation: Graduation Ceremony 2026*\n🏛️ *Government Ayurvedic College & Hospital, Dharashiv*\n\nYou are cordially invited by Dean Dr. Veena Patil and the faculty to celebrate the Convocation Ceremony of BAMS Batch 2020 on:\n📅 *Thursday, 22 October 2026 at 10:00 AM*\n📍 *Siddhai Garden, Beed Bypass Road, NH52, Dharashiv*\n\nExplore the official website with batch memories, 54 doctors roll & venue directions:\n${pageUrl}`;
+  const invitationShareText = `🎓 *Official Invitation: Graduation Ceremony 2026*\n🏛️ *Government Ayurvedic College & Hospital, Dharashiv*\n\nYou are cordially invited by Dean Dr. Veena Patil and the faculty to celebrate the Convocation Ceremony of BAMS Batch 2020 on:\n📅 *Thursday, 22 October 2026 at 10:00 AM*\n📍 *Siddhai Garden, Beed Bypass Road, NH52, Dharashiv*\n\nExplore the official website with batch memories, 55 doctors roll & venue directions:\n${pageUrl}`;
 
   if (whatsappShareBtn) {
     whatsappShareBtn.addEventListener('click', () => {
@@ -703,7 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (googleCalBtn) {
     const calTitle = encodeURIComponent("Graduation Ceremony Batch 2020 | GAC & Hospital, Dharashiv");
-    const calDetails = encodeURIComponent("Graduation Ceremony of 54 young Ayurvedic Doctors of Batch 2020-21. Dean: Dr. Veena Patil. Venue: Siddhai Garden, Beed bypass road, NH52, Dharashiv.");
+    const calDetails = encodeURIComponent("Graduation Ceremony of 55 young Ayurvedic Doctors of Batch 2020-21. Dean: Dr. Veena Patil. Venue: Siddhai Garden, Beed bypass road, NH52, Dharashiv.");
     const calLocation = encodeURIComponent("Siddhai Garden, Beed bypass road, NH52, Dharashiv, Maharashtra 413501");
     const calDates = "20261022T043000Z/20261022T093000Z";
     googleCalBtn.href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calTitle}&dates=${calDates}&details=${calDetails}&location=${calLocation}`;
@@ -720,7 +721,7 @@ DTSTAMP:20261021T000000Z
 DTSTART:20261022T043000Z
 DTEND:20261022T093000Z
 SUMMARY:Graduation Ceremony Batch 2020 - GAC Dharashiv
-DESCRIPTION:Graduation Ceremony of Batch 2020-21 at Government Ayurvedic College & Hospital, Dharashiv. Dean: Dr. Veena Patil. Celebrating 54 young doctors stepping into the noble profession of healing.
+DESCRIPTION:Graduation Ceremony of Batch 2020-21 at Government Ayurvedic College & Hospital, Dharashiv. Dean: Dr. Veena Patil. Celebrating 55 young doctors stepping into the noble profession of healing.
 LOCATION:Siddhai Garden, Beed bypass road, NH52, Dharashiv, Maharashtra
 STATUS:CONFIRMED
 END:VEVENT
